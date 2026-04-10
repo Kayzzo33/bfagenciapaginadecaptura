@@ -1,0 +1,256 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-yellow: #FFC107;
+  --color-brand-black: #000000;
+  --color-brand-dark: #111111;
+  --color-brand-purple: #B388FF;
+
+  --color-background: #000000;
+  --color-foreground: #FFFFFF;
+  --color-border: #333333;
+  --color-card: #111111;
+  --color-input: #222222;
+  --color-primary: #FFC107;
+  --color-primary-foreground: #000000;
+  --color-secondary: rgba(255, 255, 255, 0.1);
+  --color-secondary-foreground: #FFFFFF;
+  --color-accent: rgba(255, 255, 255, 0.1);
+  --color-accent-foreground: #FFFFFF;
+  --color-muted-foreground: #888888;
+  --color-ring: #FFC107;
+
+  --font-sans: 'Inter', sans-serif;
+  --font-heading: 'Poppins', sans-serif;
+
+  --animate-scroll: scroll 40s linear infinite;
+  --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-rise: rise 3s linear infinite;
+  --animate-rise-delayed: rise 3s linear infinite 1.5s;
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0) rotate(-1deg);
+    }
+
+    50% {
+      transform: translateY(-15px) rotate(1deg);
+    }
+  }
+
+  @keyframes rise {
+    0% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+
+    10% {
+      opacity: 1;
+    }
+
+    90% {
+      opacity: 1;
+    }
+
+    100% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+  }
+
+  @keyframes orb-drift-1 {
+
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+
+    33% {
+      transform: translate(60px, -80px) scale(1.15);
+    }
+
+    66% {
+      transform: translate(-40px, 40px) scale(0.9);
+    }
+  }
+
+  @keyframes orb-drift-2 {
+
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+
+    40% {
+      transform: translate(-80px, 60px) scale(1.2);
+    }
+
+    70% {
+      transform: translate(50px, -30px) scale(0.85);
+    }
+  }
+
+  @keyframes orb-drift-3 {
+
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+      transform: translate(30px, 80px) scale(1.1);
+    }
+  }
+
+  @keyframes noise-shift {
+    0% {
+      transform: translate(0, 0);
+    }
+
+    100% {
+      transform: translate(-128px, -128px);
+    }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  overflow-x: hidden;
+  font-family: var(--font-sans);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-brand-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-brand-yellow);
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1rem;
+  max-width: 80rem;
+  /* 1280px */
+}
+
+/* ── CSS animated background ── */
+.page-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  background: #000;
+  overflow: hidden;
+}
+
+/* Noise grain overlay via SVG data URI */
+.page-bg::before {
+  content: '';
+  position: absolute;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+  animation: noise-shift 8s linear infinite;
+  pointer-events: none;
+}
+
+.page-bg-orb {
+  position: absolute;
+  border-radius: 9999px;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* Central top beam — the main dramatic glow */
+.page-bg-orb-1 {
+  width: 80vw;
+  height: 80vw;
+  max-width: 1000px;
+  max-height: 1000px;
+  top: -45%;
+  left: 50%;
+  translate: -50% 0;
+  filter: blur(80px);
+  background: radial-gradient(circle at 50% 60%,
+      rgba(255, 193, 7, 0.55) 0%,
+      rgba(255, 150, 0, 0.3) 30%,
+      transparent 70%);
+  animation: orb-drift-1 22s ease-in-out infinite;
+}
+
+/* Bottom-left soft warm fill */
+.page-bg-orb-2 {
+  width: 60vw;
+  height: 60vw;
+  max-width: 750px;
+  max-height: 750px;
+  bottom: -5%;
+  left: -15%;
+  filter: blur(100px);
+  background: radial-gradient(circle,
+      rgba(255, 193, 7, 0.22) 0%,
+      transparent 65%);
+  animation: orb-drift-2 28s ease-in-out infinite;
+}
+
+/* Bottom-right accent */
+.page-bg-orb-3 {
+  width: 45vw;
+  height: 45vw;
+  max-width: 600px;
+  max-height: 600px;
+  bottom: 5%;
+  right: -10%;
+  filter: blur(100px);
+  background: radial-gradient(circle,
+      rgba(180, 100, 255, 0.18) 0%,
+      transparent 65%);
+  animation: orb-drift-3 18s ease-in-out infinite;
+}
+
+/* Narrow beam — mimics the energy beam column down the center */
+.page-bg-orb-beam {
+  position: absolute;
+  width: 4px;
+  height: 70vh;
+  top: 0;
+  left: 50%;
+  translate: -50% 0;
+  pointer-events: none;
+  filter: blur(18px);
+  background: linear-gradient(to bottom,
+      rgba(255, 193, 7, 0.8),
+      rgba(255, 193, 7, 0.3) 40%,
+      transparent);
+  animation: orb-drift-1 22s ease-in-out infinite;
+}
