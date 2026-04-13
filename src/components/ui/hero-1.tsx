@@ -44,8 +44,8 @@ export function HeroSection() {
                     "font-heading text-balance text-center text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl",
                     "[text-shadow:0_0_60px_rgba(255,193,7,.2)]"
                 )}>
-                    Acelerando Vendas com <br className="hidden md:block" />
-                    Tráfego Pago <span className="text-brand-yellow">Inteligente</span>
+                    Você Acha Que Está Fazendo Marketing, <br className="hidden md:block" />
+                    Mas Será Que Está Fazendo <span className="text-brand-yellow">Do Jeito Certo?</span>
                 </h1>
 
                 {/* Sub-headline */}
@@ -53,8 +53,7 @@ export function HeroSection() {
                     "animate-in fade-in slide-in-from-bottom-6 fill-mode-backwards duration-500 delay-200 ease-out",
                     "mx-auto max-w-2xl text-center text-lg text-white/60 leading-relaxed md:text-xl"
                 )}>
-                    Descubra como transformamos tráfego em clientes reais e previsíveis —
-                    assista ao vídeo completo abaixo.
+                    O Método Que Empresas Locais Estão Usando Para Dobrar o Número de Clientes em 90 Dias
                 </p>
 
                 {/* Single CTA */}
