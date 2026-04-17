@@ -152,7 +152,7 @@ export function VSLSection() {
                                             initial={{ opacity: 0, scale: 0.8 }}
                                             animate={{ opacity: 1, scale: 1 }}
                                             transition={{ duration: 0.5 }}
-                                            href="https://wa.me/5511999999999"
+                                            href="https://wa.me/557398170445?text=Ol%C3%A1%20BF%20Ag%C3%AAncia%2C%20vim%20pela%20p%C3%A1gina%20de%20captura%2C%20gostaria%20de%20saber%20mais"
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="pointer-events-auto group flex items-center gap-2 rounded-full bg-brand-yellow px-6 md:px-10 py-3 md:py-4 text-brand-black font-bold shadow-[0_0_50px_rgba(255,193,7,0.9)] hover:scale-110 transition-all text-sm md:text-xl border-2 border-white/40"
