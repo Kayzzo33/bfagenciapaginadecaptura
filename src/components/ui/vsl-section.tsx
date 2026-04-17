@@ -1,14 +1,5 @@
-import { cn } from "@/lib/utils";
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-
-declare global {
-    namespace JSX {
-        interface IntrinsicElements {
-            'vturb-smartplayer': any;
-        }
-    }
-}
 
 export function VSLSection() {
     const sectionRef = useRef<HTMLElement>(null);

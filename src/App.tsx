@@ -1,7 +1,6 @@
 import { HeroSection } from "@/components/ui/hero-1";
 import { VSLSection } from "@/components/ui/vsl-section";
 import { TestimonialsSection } from "@/components/ui/testimonials-section";
-import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
 function App() {
@@ -29,8 +28,8 @@ function App() {
             <VSLSection />
           </div>
           
-          {/* Bottom transition to black */}
-          <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-black via-black/80 to-transparent pointer-events-none z-20" />
+          {/* Bottom transition to black - z-0 para ficar atrás do vídeo mas à frente das luzes */}
+          <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-black via-black/80 to-transparent pointer-events-none z-0" />
         </div>
 
         <TestimonialsSection />
