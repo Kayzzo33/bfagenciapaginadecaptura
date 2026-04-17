@@ -128,10 +128,15 @@ export function VSLSection() {
                             />
 
                             <div className="video-responsive-container shadow-2xl md:shadow-none">
-                                <vturb-smartplayer
-                                    id="vid-69bc022a891545b57a952ac8"
-                                    style={{ display: "block", width: "100%", height: "100%" }}
-                                />
+                                {(() => {
+                                    const VturbPlayer = 'vturb-smartplayer' as any;
+                                    return (
+                                        <VturbPlayer
+                                            id="vid-69bc022a891545b57a952ac8"
+                                            style={{ display: "block", width: "100%", height: "100%" }}
+                                        />
+                                    );
+                                })()}
 
                                 <div className="absolute bottom-0 left-0 right-0 z-20 h-[3px] bg-white/10">
                                     <div
