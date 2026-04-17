@@ -214,32 +214,3 @@ body {
   animation: orb-drift-1 22s ease-in-out infinite;
 }
 
-/* Bottom-left soft purple fill */
-.page-bg-orb-2 {
-  width: 70vw;
-  height: 70vw;
-  max-width: 900px;
-  max-height: 900px;
-  top: 20%;
-  left: -15%;
-  filter: blur(120px);
-  background: radial-gradient(circle,
-      rgba(180, 100, 255, 0.25) 0%, /* Alterado para Roxo/Lilás */
-      transparent 65%);
-  animation: orb-drift-2 28s ease-in-out infinite;
-}
-
-/* Bottom-right accent */
-.page-bg-orb-3 {
-  width: 60vw;
-  height: 60vw;
-  max-width: 800px;
-  max-height: 800px;
-  top: 35%; /* Subiu para aparecer no Hero também */
-  right: -10%;
-  filter: blur(120px);
-  background: radial-gradient(circle,
-      rgba(180, 100, 255, 0.25) 0%, /* Aumentado de 0.18 */
-      transparent 65%);
-  animation: orb-drift-3 18s ease-in-out infinite;
-}

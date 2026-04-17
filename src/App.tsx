@@ -20,8 +20,6 @@ function App() {
             {/* Sticky container that keeps blurs fixed to viewport while inside this section */}
             <div className="sticky top-0 h-screen w-full">
               <div className="page-bg-orb page-bg-orb-1" />
-              <div className="page-bg-orb page-bg-orb-2" />
-              <div className="page-bg-orb page-bg-orb-3" />
             </div>
           </div>
 
