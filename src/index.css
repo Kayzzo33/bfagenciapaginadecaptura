@@ -126,15 +126,21 @@
   }
 }
 
-html {
-  scroll-behavior: smooth;
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  background-color: #000;
 }
 
 body {
-  background-color: var(--color-background);
   color: var(--color-foreground);
-  overflow-x: hidden;
   font-family: var(--font-sans);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
 }
 
 ::-webkit-scrollbar {
@@ -193,64 +199,47 @@ body {
 
 /* Central top beam — the main dramatic glow */
 .page-bg-orb-1 {
-  width: 80vw;
-  height: 80vw;
-  max-width: 1000px;
-  max-height: 1000px;
-  top: -45%;
+  width: 90vw;
+  height: 90vw;
+  max-width: 1200px;
+  max-height: 1200px;
+  top: -10%; /* Ajustado de -45% para ficar visível no Hero */
   left: 50%;
   translate: -50% 0;
-  filter: blur(80px);
+  filter: blur(100px);
   background: radial-gradient(circle at 50% 60%,
-      rgba(255, 193, 7, 0.55) 0%,
-      rgba(255, 150, 0, 0.3) 30%,
+      rgba(255, 193, 7, 0.7) 0%, /* Aumentado de 0.55 */
+      rgba(255, 150, 0, 0.4) 30%,
       transparent 70%);
   animation: orb-drift-1 22s ease-in-out infinite;
 }
 
-/* Bottom-left soft warm fill */
+/* Bottom-left soft purple fill */
 .page-bg-orb-2 {
-  width: 60vw;
-  height: 60vw;
-  max-width: 750px;
-  max-height: 750px;
-  bottom: -5%;
+  width: 70vw;
+  height: 70vw;
+  max-width: 900px;
+  max-height: 900px;
+  top: 20%;
   left: -15%;
-  filter: blur(100px);
+  filter: blur(120px);
   background: radial-gradient(circle,
-      rgba(255, 193, 7, 0.22) 0%,
+      rgba(180, 100, 255, 0.25) 0%, /* Alterado para Roxo/Lilás */
       transparent 65%);
   animation: orb-drift-2 28s ease-in-out infinite;
 }
 
 /* Bottom-right accent */
 .page-bg-orb-3 {
-  width: 45vw;
-  height: 45vw;
-  max-width: 600px;
-  max-height: 600px;
-  bottom: 5%;
+  width: 60vw;
+  height: 60vw;
+  max-width: 800px;
+  max-height: 800px;
+  top: 35%; /* Subiu para aparecer no Hero também */
   right: -10%;
-  filter: blur(100px);
+  filter: blur(120px);
   background: radial-gradient(circle,
-      rgba(180, 100, 255, 0.18) 0%,
+      rgba(180, 100, 255, 0.25) 0%, /* Aumentado de 0.18 */
       transparent 65%);
   animation: orb-drift-3 18s ease-in-out infinite;
-}
-
-/* Narrow beam — mimics the energy beam column down the center */
-.page-bg-orb-beam {
-  position: absolute;
-  width: 4px;
-  height: 70vh;
-  top: 0;
-  left: 50%;
-  translate: -50% 0;
-  pointer-events: none;
-  filter: blur(18px);
-  background: linear-gradient(to bottom,
-      rgba(255, 193, 7, 0.8),
-      rgba(255, 193, 7, 0.3) 40%,
-      transparent);
-  animation: orb-drift-1 22s ease-in-out infinite;
 }

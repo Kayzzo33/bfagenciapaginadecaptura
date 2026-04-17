@@ -1,23 +1,40 @@
 import { HeroSection } from "@/components/ui/hero-1";
 import { VSLSection } from "@/components/ui/vsl-section";
 import { TestimonialsSection } from "@/components/ui/testimonials-section";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 function App() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
   return (
-    <div className="relative flex w-full min-h-screen flex-col font-sans antialiased selection:bg-brand-yellow selection:text-brand-black">
+    <div className="relative flex min-h-screen w-full flex-col font-sans antialiased selection:bg-brand-yellow selection:text-brand-black overflow-x-hidden">
+      {/* Conteúdo */}
+      <main className="relative z-10 flex w-full flex-col items-center">
+        
+        {/* Unified Wrapper for Hero & VSL */}
+        <div ref={containerRef} className="relative w-full">
+          
+          {/* Background Layer - Absolute so it doesn't push content down */}
+          <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden" aria-hidden="true">
+            {/* Sticky container that keeps blurs fixed to viewport while inside this section */}
+            <div className="sticky top-0 h-screen w-full">
+              <div className="page-bg-orb page-bg-orb-1" />
+              <div className="page-bg-orb page-bg-orb-2" />
+              <div className="page-bg-orb page-bg-orb-3" />
+            </div>
+          </div>
 
-      {/* ── Pure CSS animated background — no WebGL, no GPU spike ── */}
-      <div className="page-bg" aria-hidden="true">
-        <div className="page-bg-orb page-bg-orb-1" />
-        <div className="page-bg-orb page-bg-orb-2" />
-        <div className="page-bg-orb page-bg-orb-3" />
-        <div className="page-bg-orb-beam" />
-      </div>
+          {/* Page Content */}
+          <div className="relative z-10 w-full flex flex-col items-center">
+            <HeroSection />
+            <VSLSection />
+          </div>
+          
+          {/* Bottom transition to black */}
+          <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-black via-black/80 to-transparent pointer-events-none z-20" />
+        </div>
 
-      {/* ── Page content ── */}
-      <main className="relative z-10 flex grow flex-col items-center">
-        <HeroSection />
-        <VSLSection />
         <TestimonialsSection />
       </main>
     </div>

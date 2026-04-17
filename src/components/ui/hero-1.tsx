@@ -4,13 +4,9 @@ import { ArrowDownIcon } from "lucide-react";
 export function HeroSection() {
     return (
         <section className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-            {/* Radial top glow */}
-            <div
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
-            >
-                <div className="absolute inset-0 -top-14 bg-[radial-gradient(35%_70%_at_50%_0%,rgba(255,193,7,.12),transparent)]" />
-            </div>
+
+
+            {/* Backgroundmanaged by App.tsx shared wrapper */}
 
             {/* Vertical line accents */}
             <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 hidden md:block">
@@ -20,14 +16,14 @@ export function HeroSection() {
                 <div className="absolute inset-y-0 right-12 w-px bg-gradient-to-b from-transparent via-white/8 to-transparent" />
             </div>
 
-            {/* Outer bold section borders */}
-            <div aria-hidden="true" className="absolute inset-0 mx-auto hidden min-h-screen w-full max-w-7xl lg:block">
-                <div className="absolute inset-y-0 left-0 z-10 h-full w-px bg-white/10" />
-                <div className="absolute inset-y-0 right-0 z-10 h-full w-px bg-white/10" />
+            {/* Outer borders (CORRIGIDO - sem min-h-screen) */}
+            <div aria-hidden="true" className="absolute inset-0 mx-auto hidden w-full max-w-7xl lg:block">
+                <div className="absolute inset-y-0 left-0 z-10 w-px bg-white/10" />
+                <div className="absolute inset-y-0 right-0 z-10 w-px bg-white/10" />
             </div>
 
             {/* Content */}
-            <div className="relative flex flex-col items-center justify-center gap-6 pt-28 pb-20 md:pt-40 md:pb-28">
+            <div className="relative flex flex-col items-center justify-center gap-6 pt-28 pb-16 md:pt-36 md:pb-20">
 
                 {/* Badge */}
                 <div className={cn(
@@ -35,7 +31,9 @@ export function HeroSection() {
                     "flex items-center gap-2 rounded-full border border-brand-yellow/40 bg-brand-yellow/10 px-4 py-1.5"
                 )}>
                     <span className="size-2 rounded-full bg-brand-yellow animate-pulse" />
-                    <span className="text-sm font-semibold text-brand-yellow tracking-wider uppercase">Método Exclusivo BF Agência</span>
+                    <span className="text-sm font-semibold text-brand-yellow tracking-wider uppercase">
+                        BF Agência
+                    </span>
                 </div>
 
                 {/* Headline */}
@@ -44,8 +42,8 @@ export function HeroSection() {
                     "font-heading text-balance text-center text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl",
                     "[text-shadow:0_0_60px_rgba(255,193,7,.2)]"
                 )}>
-                    Você Acha Que Está Fazendo Marketing, <br className="hidden md:block" />
-                    Mas Será Que Está Fazendo <span className="text-brand-yellow">Do Jeito Certo?</span>
+                    COMO NEGÓCIOS LOCAIS ESTÃO DOBRANDO SEU FATURAMENTO <br className="hidden md:block" />
+                    COM <span className="text-brand-yellow">ANÚNCIOS NA INTERNET.</span>
                 </h1>
 
                 {/* Sub-headline */}
@@ -53,10 +51,10 @@ export function HeroSection() {
                     "animate-in fade-in slide-in-from-bottom-6 fill-mode-backwards duration-500 delay-200 ease-out",
                     "mx-auto max-w-2xl text-center text-lg text-white/60 leading-relaxed md:text-xl"
                 )}>
-                    O Método Que Empresas Locais Estão Usando Para Dobrar o Número de Clientes em 90 Dias
+                    O Método Que Empresas Locais Estão Usando Para Dobrar o Número de Clientes em até 90 Dias
                 </p>
 
-                {/* Single CTA */}
+                {/* CTA */}
                 <a
                     href="#vsl"
                     className={cn(
