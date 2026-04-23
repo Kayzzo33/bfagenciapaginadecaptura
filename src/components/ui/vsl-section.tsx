@@ -36,7 +36,9 @@ export function VSLSection() {
         document.head.appendChild(script);
     }, []);
 
-    // CONTROLE DO CTA (70% do vídeo)
+    // CONTROLE DO CTA (70% do vídeo) E TRACKING DO PIXEL
+    const trackedMilestones = useRef(new Set<number>());
+
     useEffect(() => {
         const TARGET_TIME = 114 * 0.7; // ~80s
 
@@ -52,6 +54,20 @@ export function VSLSection() {
             if (video.duration && video.duration > 0) {
                 const p = (current / video.duration) * 100;
                 setProgress(p);
+
+                // Tracking de progresso do vídeo
+                [1, 10, 25, 50, 75, 90].forEach(milestone => {
+                    if (p >= milestone && !trackedMilestones.current.has(milestone)) {
+                        trackedMilestones.current.add(milestone);
+                        if (typeof (window as any).fbq === 'function') {
+                            if (milestone === 1) {
+                                (window as any).fbq('trackCustom', 'VideoStarted', { content_name: 'VSL' });
+                            } else {
+                                (window as any).fbq('trackCustom', 'VideoWatched', { content_name: 'VSL', percentage: milestone });
+                            }
+                        }
+                    }
+                });
             }
 
             if (current >= TARGET_TIME) {
@@ -155,6 +171,11 @@ export function VSLSection() {
                                             href="https://bfagenciaformulario.vercel.app/"
                                             target="_blank"
                                             rel="noopener noreferrer"
+                                            onClick={() => {
+                                                if (typeof (window as any).fbq === 'function') {
+                                                    (window as any).fbq('track', 'Lead', { content_name: 'Formulario' });
+                                                }
+                                            }}
                                             className="pointer-events-auto group flex items-center gap-2 rounded-full bg-brand-yellow px-6 md:px-10 py-3 md:py-4 text-brand-black font-bold shadow-[0_0_50px_rgba(255,193,7,0.9)] hover:scale-110 transition-all text-sm md:text-xl border-2 border-white/40"
                                         >
                                             QUERO APLICAR AGORA
